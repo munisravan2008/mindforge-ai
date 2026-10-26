@@ -1,0 +1,807 @@
+# BUILD A PRODUCTION-READY AI LEARNING PLATFORM — MINDFORGE AI
+
+Act as a senior full-stack engineer, AI engineer, UI/UX designer, database architect, security engineer, and product manager. Build a complete, functional, production-quality AI learning platform called **MindForge AI**.
+
+The product is inspired by NotebookLM, Quizlet, and modern AI study tools, but must have its own unique design, identity, and user experience.
+
+**IMPORTANT:** Do not build only a landing page, static prototype, or collection of mock components. Build the complete full-stack application with working authentication, real file processing, AI-powered learning generation, persistent data storage, error handling, and deployment configuration.
+
+Do not stop after generating the initial UI. Implement the backend, connect all features, test the important user flows, and fix errors before considering the project complete.
+
+## 1. Product vision
+
+Users should be able to upload study notes, PDFs, text documents, and other supported files, or provide a publicly accessible video URL. The application should analyze the source material and let users generate whichever learning resources they want.
+
+Core capabilities:
+- Upload PDFs, notes, TXT, DOCX, and supported documents.
+- Submit publicly accessible YouTube video links and extract available captions or transcripts.
+- Summarize long documents into understandable notes.
+- Generate AI flashcards with questions and answers.
+- Generate MCQ quizzes, true/false questions, short-answer questions, and practice exams.
+- Generate topic-wise revision notes, key concepts, definitions, and important questions.
+- Provide an interactive AI tutor that answers questions grounded in uploaded sources.
+- Display source references and page numbers or video timestamps when available.
+- Save study materials, edit generated content, and revisit previous sessions.
+- Track quiz scores, learning progress, and flashcard revision history.
+- Support multiple languages where the configured AI model supports them.
+
+The application must clearly communicate that generated answers can contain mistakes and should be verified against source material.
+
+## 2. Technology stack
+
+Use a modern, maintainable, full-stack architecture.
+
+Preferred stack:
+- Frontend: React, TypeScript, and Vite.
+- Styling: Tailwind CSS with shadcn/ui or an equivalent accessible component library.
+- Icons: Lucide.
+- Backend: Node.js with TypeScript and Express, or a well-supported integrated backend architecture.
+- Database: PostgreSQL using Drizzle ORM or Prisma.
+- Authentication: secure session-based authentication or a reputable authentication provider.
+- AI: an API-based language model with configurable provider and model settings.
+- File storage: private object storage when available; otherwise a secure development-compatible storage implementation.
+- Validation: Zod or equivalent shared schemas.
+- Testing: Vitest and Playwright or equivalent tools.
+- Deployment: Replit-compatible configuration with environment variables, persistent storage, and documented setup.
+
+Use the current supported package versions and ensure the project runs within the actual Replit environment. If a preferred technology or service is unavailable, choose a practical compatible alternative rather than leaving unfinished features.
+
+Do not hardcode API keys. Keep all secrets on the server.
+
+## 3. Visual identity and design system
+
+Create a premium, polished SaaS experience that looks like a funded ed-tech startup.
+
+Design direction:
+- Default theme: dark navy background with subtle indigo and violet accents.
+- Also provide a complete light theme.
+- Use clean typography, excellent spacing, soft shadows, subtle borders, and restrained gradients.
+- Use Inter or a similar modern font.
+- Cards should have clear hierarchy and consistent padding.
+- Use subtle transitions and purposeful micro-interactions.
+- Avoid excessive glow, excessive gradients, distracting animations, and generic template-like layouts.
+- Use responsive layouts that work on mobile, tablet, laptop, and large desktop screens.
+- Include skeleton loaders, empty states, error states, success feedback, and helpful tooltips.
+- Use semantic HTML and accessible keyboard navigation.
+- Maintain consistent colors, radii, spacing, and typography through reusable design tokens.
+
+The result should feel carefully designed, not automatically assembled from unrelated components.
+
+## 4. Landing page
+
+Build a complete public landing page with the following sections.
+
+### A. Navigation bar
+- MindForge AI logo and wordmark.
+- Product, Features, How It Works, and FAQ links.
+- Theme toggle.
+- Sign In button.
+- Primary CTA: Get Started Free.
+- Responsive mobile navigation.
+
+### B. Hero section
+Headline:
+"Turn Your Study Materials Into Your Personal AI Learning System."
+
+Supporting text:
+"Upload your notes, explore your videos, generate flashcards and quizzes, and master any subject with an AI tutor that understands your sources."
+
+Buttons:
+- Start Learning Free.
+- Explore Features.
+
+Add a visually compelling product preview featuring an uploaded document, generated flashcards, quiz progress, and AI tutor conversation.
+
+Use real application components or a faithful, clearly illustrative preview. Do not imply that fake preview data is actual user data.
+
+### C. Trust and value section
+Communicate benefits without inventing customer counts, testimonials, certifications, or performance claims.
+
+### D. Features section
+Show polished feature cards for:
+- AI Flashcards.
+- Smart Quizzes.
+- Document Summaries.
+- Video Learning.
+- AI Study Tutor.
+- Source-Grounded Answers.
+- Study Analytics.
+- Personalized Revision.
+
+### E. How it works
+Step 1: Upload your learning materials.
+
+Step 2: Let AI analyze your sources.
+
+Step 3: Generate your preferred study tools.
+
+Step 4: Practice, review, and track progress.
+
+### F. Interactive product preview
+Create an attractive preview of a real workflow. Where feasible, allow visitors to explore a sample deck or sample quiz without creating an account.
+
+### G. Additional sections
+- Benefits for students and educators.
+- Supported sources and formats.
+- FAQ accordion.
+- Final CTA.
+- Complete footer with Privacy Policy, Terms, Contact, and product links.
+
+All navigation and CTA buttons must lead to working routes or meaningful interactions.
+
+## 5. Authentication and onboarding
+
+Implement:
+- Sign-up.
+- Sign-in.
+- Sign-out.
+- Email verification where supported.
+- Password reset where supported.
+- Protected routes.
+- Secure session handling.
+- Authentication validation and useful error messages.
+- User profile and account settings.
+
+Never store passwords in plaintext. Use a secure authentication library or correctly implemented password hashing if managing credentials directly.
+
+After registration, display a short onboarding flow:
+1. Ask the user's preferred learning language.
+2. Ask their learning goal: exam preparation, college studies, competitive exams, professional learning, or general knowledge.
+3. Let them choose their preferred study methods.
+4. Explain how to add their first source.
+5. Take them directly to the workspace.
+
+Make optional preferences skippable. Save them to the database.
+
+## 6. Main application dashboard
+
+Create a protected dashboard with a premium application shell.
+
+### Sidebar
+- Overview.
+- My Sources.
+- Study Collections.
+- Flashcards.
+- Quizzes.
+- AI Tutor.
+- Study History.
+- Analytics.
+- Settings.
+
+Include a clear New Study Session button and a collapsible sidebar.
+
+### Dashboard header
+- Greeting based on the user's profile.
+- Global search.
+- Notifications where implemented.
+- Theme toggle.
+- User profile menu.
+
+### Dashboard content
+- Welcome section with an upload CTA.
+- Quick actions: Upload PDF, Add Video, Create Flashcards, Generate Quiz.
+- Recent sources.
+- Recently created study sets.
+- Continue Learning section.
+- Study activity chart based on real saved data.
+- Quiz performance summary.
+- Empty state for new users with a clear first action.
+
+All statistics and charts must use actual persisted user data. Display an appropriate empty state when no data exists.
+
+## 7. Source upload and processing center
+
+This is one of the most important features.
+
+Create a polished source-import interface with:
+- Drag-and-drop file upload.
+- File picker.
+- Upload progress.
+- File name, size, type, and processing status.
+- File removal before submission.
+- Retry controls for recoverable failures.
+- Clear processing-stage indicators.
+
+Support appropriate formats such as PDF, TXT, DOCX, and Markdown, subject to implemented parser capabilities and configurable file-size limits.
+
+Validate MIME types, file extensions, file sizes, and file content. Reject unsupported, malformed, encrypted, or unsafe files with helpful messages.
+
+For PDFs:
+- Extract text while preserving page boundaries where possible.
+- Support multi-page documents.
+- Detect scanned PDFs and clearly report when OCR is needed.
+- Implement OCR only when a suitable service or library is actually configured.
+- Preserve page numbers for citations.
+
+For DOCX and text files:
+- Extract and normalize text.
+- Preserve headings and useful document structure when possible.
+
+For video URLs:
+- Accept valid YouTube URLs.
+- Validate the video URL and identifier.
+- Retrieve captions or transcripts using a supported, compliant method.
+- Preserve available timestamps.
+- Handle missing captions, private videos, deleted videos, restricted content, and unavailable transcripts gracefully.
+- Never pretend to have analyzed a video if its transcript could not be retrieved.
+- Do not bypass authentication, access controls, or platform restrictions.
+
+For every source, show the processing status:
+- Uploaded.
+- Extracting content.
+- Preparing for AI analysis.
+- Ready.
+- Failed.
+
+Store the extracted content securely and associate it with the authenticated user. Do not expose private source files through public URLs.
+
+## 8. Source analysis and AI processing pipeline
+
+Implement a real backend processing pipeline.
+
+1. Receive and validate the source.
+2. Extract text and metadata.
+3. Normalize the extracted content.
+4. Split large documents into manageable overlapping chunks.
+5. Preserve page numbers, headings, and timestamps as metadata.
+6. Generate embeddings if a supported embedding provider is configured.
+7. Store chunks and retrieval metadata.
+8. Create an initial source summary and topic outline.
+9. Mark the source ready only when required processing has completed.
+10. Make the source available for grounded study generation.
+
+For large files, use background jobs or another reliable asynchronous processing strategy compatible with the deployment environment.
+
+Include:
+- Processing status persistence.
+- Retry handling.
+- Timeouts.
+- Per-user rate limits.
+- Useful error logging.
+- Idempotency where appropriate.
+- Cleanup for abandoned uploads and temporary files.
+
+Do not send entire large documents to a model in a single oversized prompt. Use chunking, retrieval, or hierarchical summarization.
+
+## 9. AI generation workspace
+
+After processing, open a source workspace.
+
+### Source overview
+Display:
+- Source title.
+- Source type.
+- Upload date.
+- Processing status.
+- Document summary.
+- Main topics.
+- Key concepts.
+- Important definitions.
+- Suggested next study actions.
+
+### Generation controls
+Let the user choose:
+- Content type.
+- Number of items.
+- Difficulty: Easy, Medium, Hard, or Mixed.
+- Output language.
+- Selected topics.
+- Target audience or education level.
+- Short or detailed explanations.
+- Number of questions and question types.
+
+Provide clear Generate buttons, loading indicators, and generation progress where supported.
+
+Users should be able to generate one resource at a time without regenerating everything.
+
+## 10. AI flashcards
+
+Implement a fully functional flashcard generator and study interface.
+
+Generation options:
+- Basic question-and-answer cards.
+- Definition cards.
+- Concept explanation cards.
+- Formula and example cards.
+- Important facts.
+- Topic-specific cards.
+- Mixed difficulty.
+- User-selected card count.
+
+Each card should contain:
+- Front: one concise question or prompt.
+- Back: an accurate, concise answer.
+- Optional explanation.
+- Optional source reference and page number.
+
+### Flashcard study interface
+- Flip animation.
+- Previous and next controls.
+- Keyboard navigation.
+- Progress indicator.
+- Shuffle.
+- Mark as Known.
+- Mark as Needs Review.
+- Restart deck.
+- Edit card.
+- Delete card with confirmation.
+- Add custom card.
+- Save deck.
+- Rename deck.
+- Search and filter cards.
+
+Persist decks and review history in the database.
+
+Implement a simple spaced-repetition scheduling system using review outcomes and next-review dates. Do not claim advanced personalization unless it is actually implemented.
+
+Include export options for CSV or another practical format where supported.
+
+## 11. AI quiz builder
+
+Build a flexible quiz generation and assessment engine.
+
+Question types:
+- Multiple-choice questions.
+- True or false.
+- Short-answer questions.
+- Fill-in-the-blank questions.
+
+For multiple-choice questions, provide one correct answer and plausible distractors.
+
+Quiz settings:
+- Number of questions.
+- Difficulty.
+- Topic selection.
+- Question types.
+- Optional timer.
+- Shuffle questions and options.
+- Practice mode or assessment mode.
+
+### Quiz-taking interface
+- One question per screen or a clear question list.
+- Progress indicator.
+- Answer selection.
+- Previous and next navigation.
+- Flag for review.
+- Optional timer.
+- Submit confirmation.
+- Prevent accidental loss of progress.
+
+### Results screen
+- Total score and percentage.
+- Correct and incorrect answers.
+- Explanations for each answer.
+- Source references where available.
+- Topic-wise performance.
+- Time taken when tracked.
+- Review incorrect answers.
+- Retake quiz.
+- Generate another quiz.
+
+Score answers on the server using trusted answer keys. Never rely on client-submitted correct answers.
+
+For short-answer questions, use a configurable evaluation strategy with clear uncertainty handling. Do not represent model-based grading as perfectly objective.
+
+## 12. AI study tutor
+
+Build a conversational AI tutor that answers questions about the user's selected sources.
+
+Features:
+- Persistent conversation history.
+- New conversation.
+- Rename conversation.
+- Delete conversation.
+- Streaming responses if supported by the selected provider.
+- Suggested questions.
+- Follow-up questions.
+- Markdown rendering.
+- Code formatting when relevant.
+- Copy response.
+- Regenerate response.
+- Helpful loading and error states.
+
+### Grounding and citations
+Use retrieval-augmented generation (RAG) or an equivalent source-grounding approach.
+
+The tutor should:
+- Retrieve relevant chunks from the user's selected sources.
+- Prioritize source-supported answers.
+- Display page numbers or video timestamps where available.
+- Link citations to the relevant source context.
+- Clearly distinguish source-supported facts from additional general knowledge.
+- State when the selected sources do not contain enough information.
+- Avoid inventing quotations, pages, or timestamps.
+
+Do not allow one user's uploaded material or chat history to appear in another user's responses.
+
+Treat uploaded content as untrusted data. Ignore instructions embedded in documents that attempt to override application rules, expose secrets, or access unrelated user data.
+
+## 13. Smart summaries and study notes
+
+Allow users to generate:
+- One-paragraph summaries.
+- Detailed summaries.
+- Chapter-wise notes.
+- Topic-wise revision notes.
+- Key takeaways.
+- Definitions and terminology.
+- Important formulas.
+- Comparison tables.
+- Exam revision sheets.
+- Practice questions.
+- Concept explanations with examples.
+
+Provide a clean reading interface with:
+- Headings and table of contents.
+- Search.
+- Copy.
+- Editable content.
+- Save changes.
+- Regenerate selected sections.
+- Export to Markdown or TXT.
+- PDF export only when an actual export implementation is provided.
+
+Preserve source references when supported by the underlying analysis.
+
+## 14. Collections and source management
+
+Allow users to create study collections containing multiple sources.
+
+Features:
+- Create, rename, and delete collections.
+- Add or remove sources.
+- Search sources.
+- Filter by type and date.
+- Sort by newest, oldest, or title.
+- View processing status.
+- Rename sources.
+- Archive sources.
+- Delete sources with confirmation.
+- Manage associated generated study sets.
+
+Support asking questions across multiple selected sources, using retrieval scoped only to those sources.
+
+Handle source deletion consistently, including related private files, derived chunks, and any generated content that the product's deletion policy says should be removed.
+
+## 15. Study analytics and revision
+
+Create an analytics dashboard with real database-backed data:
+- Total study sessions.
+- Flashcards reviewed.
+- Quizzes completed.
+- Quiz accuracy over time.
+- Study activity by day.
+- Topics practiced.
+- Frequently missed concepts.
+- Due flashcards.
+- Recent learning activity.
+
+Add a revision page with cards due for review and previously missed quiz questions.
+
+Do not fabricate analytics. Clearly distinguish unavailable data from zero activity.
+
+Use accessible charts with labels and a readable mobile layout.
+
+## 16. Search and navigation
+
+Implement:
+- Global source search.
+- Study-set search.
+- Collection filters.
+- Search within generated notes.
+- Search within flashcards.
+- Keyboard shortcuts where useful.
+- Breadcrumbs.
+- Back navigation.
+- Useful empty states.
+
+All routes must work after page refresh. Configure the deployment server to handle client-side routes correctly.
+
+## 17. Database design
+
+Design normalized, maintainable database tables for at least:
+- Users and profiles.
+- User preferences.
+- Sources.
+- Source files and metadata.
+- Extracted document chunks.
+- Collections.
+- Collection-source relationships.
+- Flashcard decks.
+- Flashcards.
+- Flashcard review history.
+- Quizzes.
+- Quiz questions.
+- Quiz attempts.
+- Quiz responses.
+- Conversations.
+- Chat messages.
+- Generated summaries and study notes.
+- Study activity.
+- Processing jobs where required.
+
+Include primary keys, foreign keys, timestamps, appropriate indexes, unique constraints, and ownership relationships.
+
+Use database migrations and provide seed data only for clearly identified demonstration accounts or sample content.
+
+Every user-owned record must be protected by server-side authorization. Never assume a record belongs to the current user simply because the client supplied its ID.
+
+## 18. Backend API and validation
+
+Create documented, consistent API endpoints for:
+- Authentication and profile.
+- Source upload and processing status.
+- Source listing, editing, and deletion.
+- Collections.
+- AI generation.
+- Flashcards and review history.
+- Quiz creation, submission, and results.
+- Tutor conversations and messages.
+- Summaries and notes.
+- Analytics.
+- Search.
+
+Use proper HTTP methods, status codes, validation, pagination, and consistent error responses.
+
+Validate every request on the server. Enforce authorization, file limits, rate limits, and generation quotas.
+
+Avoid returning stack traces, secrets, raw internal errors, or unnecessary sensitive information to clients.
+
+Document the API using OpenAPI or an equivalent developer-friendly reference.
+
+## 19. AI provider integration
+
+Create a centralized server-side AI service rather than scattering model calls throughout the frontend.
+
+Requirements:
+- Configurable provider and model.
+- API key read from Replit Secrets or environment variables.
+- Structured output validation for flashcards and quizzes.
+- Clear separation between prompts and application logic.
+- Token and request limits.
+- Timeouts and controlled retries.
+- Graceful handling of provider outages.
+- Usage tracking and configurable cost controls.
+- Safe handling of untrusted source content.
+- Model output validation before database writes.
+
+If an AI API key is missing, show a clear configuration message in development. Never silently replace real AI generation with fake responses.
+
+If demonstration mode is provided, label it clearly and keep it separate from production behavior.
+
+## 20. Security and privacy
+
+Implement production-minded security practices:
+- HTTPS in production.
+- Secure authentication and session cookies where applicable.
+- Password hashing if managing passwords directly.
+- CSRF protections where relevant.
+- Protection against cross-site scripting.
+- Safe Markdown rendering.
+- Input validation and output encoding.
+- Rate limiting.
+- Secure file handling.
+- Private object storage.
+- Server-side ownership checks.
+- Database query safety.
+- Environment-based secrets.
+- Restricted CORS configuration.
+- Safe error logging.
+- Upload size limits.
+- File type and content validation.
+- Protection against path traversal and malicious uploads.
+- Prevention of cross-user data leakage.
+- Account deletion and data deletion workflows.
+- Clear privacy policy and terms pages.
+
+Do not log passwords, API keys, private document contents, or sensitive chat messages unnecessarily.
+
+Do not claim legal compliance or security certification without actual verification.
+
+## 21. Settings and account management
+
+Implement:
+- Profile editing.
+- Preferred language.
+- Default flashcard and quiz settings.
+- Theme selection.
+- Notification preferences where notifications exist.
+- Data export where implemented.
+- Change password or authentication-provider management where supported.
+- Account deletion with explicit confirmation.
+- Privacy policy.
+- Terms of service.
+- Help and contact information.
+
+Persist settings across sessions.
+
+## 22. Loading, errors, and edge cases
+
+Handle the real-world cases:
+- Empty documents.
+- Unsupported file types.
+- Oversized uploads.
+- Corrupted PDFs.
+- Scanned documents without available OCR.
+- Missing video transcripts.
+- Unavailable AI services.
+- Model output that fails validation.
+- Network interruptions.
+- Duplicate submissions.
+- Expired sessions.
+- Unauthorized access.
+- Missing or deleted records.
+- Empty collections.
+- Empty flashcard decks.
+- Quiz submission failures.
+- Database outages.
+- Users refreshing during a study session.
+
+Provide understandable error messages and recovery actions. Never leave users with an infinite spinner or a silent failure.
+
+## 23. Performance and maintainability
+
+- Use reusable components and typed service layers.
+- Split large frontend bundles when useful.
+- Lazy-load appropriate routes.
+- Paginate large collections.
+- Avoid unnecessary database queries.
+- Use indexes for common filters and ownership queries.
+- Process large documents asynchronously.
+- Cache only where safe and appropriate.
+- Add request IDs and structured operational logs.
+- Add database migrations.
+- Provide a clear project structure.
+- Avoid giant components, duplicated business logic, and placeholder implementations.
+
+## 24. Testing requirements
+
+Write automated tests for important behavior.
+
+### Unit tests
+- Input validation.
+- Text chunking.
+- Document metadata processing.
+- AI response schema validation.
+- Flashcard review scheduling.
+- Quiz scoring.
+- Ownership checks.
+
+### Integration tests
+- Source upload and processing.
+- Database persistence.
+- Flashcard generation.
+- Quiz submission and scoring.
+- Tutor retrieval and citations.
+- Authentication and access control.
+
+### End-to-end tests
+1. A user signs up or signs in.
+2. The user uploads a supported document.
+3. The document is processed successfully.
+4. The user generates flashcards.
+5. The user studies and marks cards.
+6. The user generates and completes a quiz.
+7. The user views results.
+8. The user asks a source-grounded tutor question.
+9. The user refreshes the page and verifies persistence.
+10. A different user cannot access the first user's private data.
+
+Mock external AI calls in automated tests where appropriate, but verify real provider integration separately when credentials are configured.
+
+Run the tests, TypeScript checks, linting, and production build. Fix failures rather than merely reporting them.
+
+## 25. Deployment and environment configuration
+
+Prepare the project for deployment on Replit.
+
+Provide:
+- Correct run and build commands.
+- A production-compatible start command.
+- Environment variable validation.
+- Database connection configuration.
+- Database migration commands.
+- File storage configuration.
+- Health-check endpoint.
+- Error logging.
+- Setup documentation.
+- Deployment instructions.
+- A clear list of required secrets.
+- Safe startup behavior when configuration is missing.
+
+Provide an `.env.example` containing placeholder values only. Never commit actual secrets.
+
+Use Replit's supported persistent database and storage options, or clearly document any external services required.
+
+Do not claim that the application is production-ready merely because it starts successfully. Verify the major workflows and document any remaining limitations.
+
+## 26. Recommended UI routes
+
+Create a clean route structure similar to:
+
+Public:
+- `/`
+- `/features`
+- `/how-it-works`
+- `/faq`
+- `/privacy`
+- `/terms`
+- `/login`
+- `/signup`
+- `/forgot-password`
+
+Authenticated:
+- `/app`
+- `/app/sources`
+- `/app/sources/:sourceId`
+- `/app/collections`
+- `/app/collections/:collectionId`
+- `/app/flashcards`
+- `/app/flashcards/:deckId`
+- `/app/quizzes`
+- `/app/quizzes/:quizId`
+- `/app/quizzes/:quizId/results`
+- `/app/tutor`
+- `/app/tutor/:conversationId`
+- `/app/notes`
+- `/app/analytics`
+- `/app/settings`
+
+Adapt these routes if the framework requires a different convention, while retaining equivalent functionality.
+
+## 27. Hackathon demo experience
+
+Include a polished demo mode that helps judges understand the product quickly.
+
+Provide:
+- A clearly labeled sample source.
+- Sample flashcards.
+- A sample quiz.
+- A sample tutor conversation.
+- A guided workflow explaining the core value proposition.
+
+Demo content must be clearly separated from actual user content.
+
+If an external AI provider or database is not configured, explain the missing configuration rather than pretending live functionality works.
+
+The ideal judge experience should demonstrate this complete flow:
+
+Upload a PDF → Analyze the source → Generate flashcards → Take a quiz → Ask the AI tutor → View learning progress.
+
+## 28. Final execution instructions
+
+Follow this implementation order:
+
+Phase 1: Inspect the Replit environment and create the application architecture, design system, and responsive landing page.
+
+Phase 2: Implement the database, authentication, user ownership rules, and protected dashboard.
+
+Phase 3: Implement source upload, extraction, processing, and persistent storage.
+
+Phase 4: Implement AI generation, flashcards, quizzes, summaries, and source-grounded tutoring.
+
+Phase 5: Implement collections, analytics, revision, and settings.
+
+Phase 6: Add security controls, validation, loading states, error handling, and accessibility improvements.
+
+Phase 7: Write and run automated tests, fix errors, and verify the production build.
+
+Phase 8: Prepare deployment configuration, migrations, environment documentation, and the hackathon demo flow.
+
+**Critical acceptance criteria:**
+- Every visible button must have a meaningful action.
+- Forms must validate and submit correctly.
+- Data must persist across page refreshes and authenticated sessions.
+- AI features must use the configured provider rather than fabricated responses.
+- Uploaded content must be isolated between users.
+- The UI must be responsive and accessible.
+- Errors must be visible and recoverable.
+- All core routes must work.
+- No exposed API keys or hardcoded credentials.
+- No fake analytics presented as real activity.
+- No unfinished placeholder pages for core features.
+- The app must pass its available tests and production build.
+
+Start building the complete application now. First establish a working end-to-end foundation, then implement and verify each feature. Make sensible product decisions without asking me unnecessary questions. If any feature requires external credentials or infrastructure, implement the integration properly, document the requirement, and provide a clear setup path.
+
+At completion, provide a concise summary of the implemented features, the technology stack, required secrets, database setup instructions, how to run the app, how to test the main workflow, and any genuine limitations that remain.

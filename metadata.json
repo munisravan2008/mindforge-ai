@@ -1,0 +1,6 @@
+{
+  "name": "MindForge AI",
+  "description": "Production-Ready AI Learning Platform — Turn study materials into personalized notes, flashcards, quizzes, and grounded AI tutoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
